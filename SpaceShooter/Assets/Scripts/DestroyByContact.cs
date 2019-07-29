@@ -23,11 +23,14 @@ public class DestroyByContact : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if (other.tag == "Boundary")
+        if (other.tag == "boundary" || other.tag == "enemy")
         {
             return;
         }
+        if (explosion != null )
+        {
         Instantiate(explosion, transform.position, transform.rotation);
+        }
         if (other.tag == "Player")
         {
             Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
